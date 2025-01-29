@@ -96,7 +96,12 @@ public class ProductController {
     @GetMapping("/search-by-product/{id}")
     public ProductResponse searchByProductId(@PathVariable String id) {
         Product product = productService.searchByProductId(id);
-        return new ProductResponse(product.getId(), product.getProductId(), product.getProductName(), product.getPrice(), product.getCategory());
+        return new ProductResponse(product.getId(), product.getProductId(), product.getProductName(), product.getPrice(), product.getCategory(), product.getQuantity());
     }
 
+    @PostMapping("/sell")
+    public ResponseEntity<String> sellProduct(@RequestParam String productId, @RequestParam int quantity) {
+        String response = productService.sellProduct(productId, quantity);
+        return ResponseEntity.ok(response);
+    }
 }

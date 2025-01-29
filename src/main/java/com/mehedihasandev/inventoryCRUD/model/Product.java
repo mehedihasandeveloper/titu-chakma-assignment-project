@@ -24,7 +24,9 @@ public class Product {
     private String price;
 
     @NotBlank(message = "Product category cannot be blank")
-    private String Category;
+    private String category;
+
+    private Integer Quantity;
 
     public Long getId() {
         return id;
@@ -59,10 +61,18 @@ public class Product {
     }
 
     public String getCategory() {
-        return Category;
+        return category;
     }
 
     public void setCategory(String category) {
-        Category = category;
+        this.category = category;
+    }
+
+    public Integer getQuantity() {
+        return Quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        Quantity = quantity;
     }
 }

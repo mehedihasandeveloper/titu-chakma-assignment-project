@@ -65,5 +65,23 @@ public class ProductService {
         return productRepository.findByProductId(id);
     }
 
+    public String sellProduct(String productId, int quantity) {
+        Optional<Product> productOptional = Optional.ofNullable(productRepository.findByProductId(productId));
 
+        if (productOptional.isEmpty()) {
+            return "Product not found!";
+        }
+
+        Product product = productOptional.get();
+
+        if (product.getQuantity() < quantity) {
+            return "Insufficient stock!";
+        }
+
+        // Deduct the quantity
+        product.setQuantity(product.getQuantity() - quantity);
+        productRepository.save(product);
+
+        return "Product sold successfully! Remaining stock: " + product.getQuantity();
+    }
 }

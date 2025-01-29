@@ -7,12 +7,15 @@ public class ProductResponse {
     private String price;
     private String category;
 
-    public ProductResponse(Long id, String productId, String productName, String price, String category) {
+    private Integer quantity;
+
+    public ProductResponse(Long id, String productId, String productName, String price, String category, Integer quantity) {
         this.id = id;
         this.productId = productId;
         this.productName = productName;
         this.price = price;
         this.category = category;
+        this.quantity = quantity;
     }
 
     public Long getId() {
@@ -53,5 +56,14 @@ public class ProductResponse {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 }
